@@ -11,13 +11,6 @@ import org.lwjgl.opengl.GL11._
 
 import scala.collection.JavaConverters._
 
-
-/*object ObjectViewer {
-  def main(args: Array[String]): Unit = {
-    new ObjectViewer("cat.obj").run()
-  }
-}*/
-
 case class POV(alpha: Float, beta: Float, zoom: Double)
 
 class ObjectViewer(modelPath: String) {

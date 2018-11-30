@@ -11,13 +11,6 @@ import org.lwjgl.opengl.GL11._
 
 import scala.collection.JavaConverters._
 
-
-/*object DualObj {
-  def main(args: Array[String]): Unit = {
-    new DualObj("cat.obj").run()
-  }
-}*/
-
 class DualObj(modelPath: String) {
   val center = (1, 1)
   private val model = ObjLoad.translateModel(
