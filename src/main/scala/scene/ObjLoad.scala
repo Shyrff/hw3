@@ -67,14 +67,22 @@ object ObjLoad extends App {
       model.normals.add(new Vector3f(x, y, z))
     }
     else if (line.startsWith("f ")) {
-      val vertexIndices = new Vector3f(line.split(" ")(1).split("/")(0).toFloat,
-        line.split(" ")(2).split("/")(0).toFloat ,
-        line.split(" ")(3).split("/")(0).toFloat)
-      val normalIndices = new Vector3f(line.split(" ")(1).split("/")(2).toFloat,
-        line.split(" ")(2).split("/")(2).toFloat ,
-        line.split(" ")(3).split("/")(2).toFloat)
-      model.faces.add(Faces(vertexIndices, normalIndices))
+      if (line.split(" ")(1).split("/").length == 2) {
+        val vertexIndices = new Vector3f(line.split(" ")(1).split("/")(0).toFloat,
+          line.split(" ")(2).split("/")(0).toFloat,
+          line.split(" ")(3).split("/")(0).toFloat)
+        val normalIndices = new Vector3f(line.split(" ")(1).split("/")(2).toFloat,
+          line.split(" ")(2).split("/")(2).toFloat,
+          line.split(" ")(3).split("/")(2).toFloat)
+        model.faces.add(Faces(vertexIndices, normalIndices))
+      } else {
+        val vertexIndices = new Vector3f(line.split(" ")(1).split("/")(0).toFloat,
+          line.split(" ")(2).split("/")(0).toFloat,
+          line.split(" ")(3).split("/")(0).toFloat)
+        val normalIndices = new Vector3f()
+        model.faces.add(Faces(vertexIndices, normalIndices))
+      }
+
     }
   }
-
 }
